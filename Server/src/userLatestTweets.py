@@ -1,5 +1,5 @@
 from tweepy import OAuthHandler, API, Cursor
-import twitterApiConfig
+from Server.src import twitterApiConfig
 
 auth = OAuthHandler(twitterApiConfig.consumer_key, twitterApiConfig.consumer_secret)
 auth.set_access_token(twitterApiConfig.access_token, twitterApiConfig.access_token_secret)
