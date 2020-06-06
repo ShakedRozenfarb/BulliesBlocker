@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import './searchComponent.less';
-import ServerRequestsService from "../../services/serverRequestsService";
+import regeneratorRuntime from "regenerator-runtime";
 
 class Search extends Component {
     constructor(props){
         super(props);
-        this.serverService = new ServerRequestsService();
         this.state = {
             value: ''
         };
@@ -24,7 +23,8 @@ class Search extends Component {
 
     render() {
         return (
-            <div>
+            <div className="center">
+                <h1 className="app-title">Bully Blocker</h1>
                 <textarea value={this.state.value} onChange={this.handleChange} placeholder="type twitter user id"></textarea>
                 <input className="searchButton" type="submit" value="Submit" onClick={event =>this.handleSubmit(event)}/>
             </div>

@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import Search from "../searchComponent/searchComponent.jsx";
 
 import './mainComponent.less';
-import ServerRequestsService from "../../services/serverRequestsService";
+import ServerRequestsService from "../../services/serverRequestsService.jsx";
+import ResultsComponent from "../resultsComponent/resultsComponent.jsx";
 
 class Main extends Component {
 
@@ -23,8 +24,7 @@ class Main extends Component {
     render() {
         return (
         <div>
-            <a>app logo</a>
-            {this.state.userResults ? <Search getUserResults={this.getUserResults} /> : null }
+            {this.state.userResults ? <ResultsComponent userResults={this.state.userResults} /> : <Search getUserResults={this.getUserResults} /> }
         </div>
         )
     }
