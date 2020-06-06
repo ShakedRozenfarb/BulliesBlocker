@@ -3,7 +3,7 @@ from tensorflow.python.keras import Sequential
 from tensorflow.python.keras.callbacks import EarlyStopping
 from tensorflow.python.keras.layers import LSTM, Dropout, Dense, SpatialDropout1D, Embedding
 import torch.nn as nn
-from src.dataLoader import load_data
+from src.modules.data_loader import load_data
 
 
 class LSTM(nn.Module):

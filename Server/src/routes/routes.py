@@ -1,5 +1,6 @@
 from flask import jsonify, request
-from Api.flask_app.backend.bully_calculator_handler import calculate_bully_score
+from src.modules.bully_calculator_handler import calculate_bully_score
+
 
 def router(app):
     @app.route("/ping", methods=["GET"])
@@ -23,5 +24,3 @@ def router(app):
             mimetype='application/json'
         )
         return response
-
-

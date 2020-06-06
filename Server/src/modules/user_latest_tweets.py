@@ -1,8 +1,8 @@
 from tweepy import OAuthHandler, API, Cursor
-from Server.src import twitterApiConfig
+from src.modules import twitter_api_config
 
-auth = OAuthHandler(twitterApiConfig.consumer_key, twitterApiConfig.consumer_secret)
-auth.set_access_token(twitterApiConfig.access_token, twitterApiConfig.access_token_secret)
+auth = OAuthHandler(twitter_api_config.consumer_key, twitter_api_config.consumer_secret)
+auth.set_access_token(twitter_api_config.access_token, twitter_api_config.access_token_secret)
 auth_api = API(auth)
 
 user_tweets = []
