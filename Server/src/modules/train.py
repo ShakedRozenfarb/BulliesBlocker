@@ -2,7 +2,7 @@ import itertools
 import tensorflow as tf
 import torch.nn as nn
 import torch
-from src.Test import Test
+from src.modules.test import Test
 
 
 def train(net, batch_size, train_loader, test_loader):

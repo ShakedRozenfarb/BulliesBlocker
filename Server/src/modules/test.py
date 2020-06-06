@@ -1,7 +1,7 @@
 import torch
 
 
-class Test():
+class Test:
     test_loss = []
 
     def test(batch_size, net, test_loader, epoch, criterion):

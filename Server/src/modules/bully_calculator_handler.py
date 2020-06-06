@@ -1,5 +1,5 @@
-from Api.flask_app.db_handler.db_handler import MongoHandler
-from Server.src.userLatestTweets import get_user_time_line
+from src.modules.db_handler import MongoHandler
+from src.modules.user_latest_tweets import get_user_time_line
 
 IS_SCREEN_NAME = True
 TWEETS_COUNT = 100
