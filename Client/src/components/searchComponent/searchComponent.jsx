@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-
 import './searchComponent.less';
+import ServerRequestsService from "../../services/serverRequestsService";
 
 class Search extends Component {
     constructor(props){
         super(props);
+        this.serverService = new ServerRequestsService();
         this.state = {
             value: ''
         };
@@ -18,16 +18,15 @@ class Search extends Component {
         this.setState({value: event.target.value});
     }
 
-    handleSubmit(event) {
-        //TODO: make http request to server
-        event.preventDefault();
+    async handleSubmit() {
+        await this.props.getUserResults();
     }
 
     render() {
         return (
             <div>
                 <textarea value={this.state.value} onChange={this.handleChange} placeholder="type twitter user id"></textarea>
-                <input className="searchButton" type="submit" value="Submit" />
+                <input className="searchButton" type="submit" value="Submit" onClick={event =>this.handleSubmit(event)}/>
             </div>
         )
     }
