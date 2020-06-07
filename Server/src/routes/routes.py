@@ -16,11 +16,6 @@ def router(app):
                 status=400,
                 mimetype='application/json'
             )
-        score, message = calculate_bully_score(req_json)
+        result = calculate_bully_score(req_json["user"])
 
-        response = app.response_class(
-            response=jsonify({"message": message, "score": score}),
-            status=200 if score else 400,
-            mimetype='application/json'
-        )
-        return response
+        return jsonify(result), 200
