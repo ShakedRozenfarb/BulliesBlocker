@@ -1,11 +1,9 @@
 import json
-import numpy as np
-from nltk.tokenize import word_tokenize
+import nltk
 import re
 import torch
 from torch.utils.data import TensorDataset, DataLoader
 import numpy as np
-import pandas
 
 
 def shuffle(a, b):
@@ -26,7 +24,8 @@ def load_data():
 
     i = 0
     for tweet in tweets_json:
-        tokenize_tweets.append(word_tokenize(tweet['content']))
+        nltk.download('punkt')
+        tokenize_tweets.append(nltk.tokenize.word_tokenize(tweet['content']))
         #labels.append(tweet['annotation']['label'][0])
         labels[i] = np.array(tweet['annotation']['label'][0])
         i+=1

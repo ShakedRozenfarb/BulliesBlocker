@@ -1,5 +1,5 @@
 from flask import jsonify, request
-from src.modules.bully_calculator_handler import calculate_bully_score
+from Server.src.modules.bully_calculator_handler import calculate_bully_score
 
 
 def router(app):

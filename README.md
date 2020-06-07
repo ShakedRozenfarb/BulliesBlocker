@@ -5,12 +5,12 @@ BullyBlocker project
 
 # Install Requirements
 ```bash
-pip install -e Server -e Api
+pip install -e Server
 ```
 
 # Run
 ```bash
-python Api/wsgi.py
+python Server/wsgi.py
 ```
 
 # Routes

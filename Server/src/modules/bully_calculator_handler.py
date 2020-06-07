@@ -1,5 +1,5 @@
-from src.modules.db_handler import MongoHandler
-from src.modules.user_latest_tweets import get_user_time_line
+from Server.src.modules.db_handler import MongoHandler
+from Server.src.modules.user_latest_tweets import get_user_time_line
 
 IS_SCREEN_NAME = True
 TWEETS_COUNT = 100

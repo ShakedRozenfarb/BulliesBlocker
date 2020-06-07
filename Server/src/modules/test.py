@@ -1,10 +1,10 @@
 import torch
 
 
-class Test:
+class Test(object):
     test_loss = []
 
-    def test(batch_size, net, test_loader, epoch, criterion):
+    def test(self, batch_size, net, test_loader, epoch, criterion):
         correct = 0
         total = 0
         epoch_loss = 0
