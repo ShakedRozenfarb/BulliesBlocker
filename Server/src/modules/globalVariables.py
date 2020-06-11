@@ -1,0 +1,2 @@
+tokenToIdFile = './TokenToId'
+modelFile = './TrainedLSTM'

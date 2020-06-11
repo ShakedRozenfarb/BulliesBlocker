@@ -37,7 +37,8 @@ def train(net, batch_size, train_loader, test_loader):
                       (epoch + 1, i + 1, running_loss / 100))
                 running_loss = 0.0
             i += 1
-        Test().test(batch_size=batch_size, net=net, test_loader=test_loader, epoch=epoch, criterion=criterion)
+        # Test.test(batch_size=batch_size, net=net, test_loader=test_loader, epoch=epoch, criterion=criterion)
         train_loss.append(epoch_loss / i)
 
     print('\nFinished Training')
+    return net
