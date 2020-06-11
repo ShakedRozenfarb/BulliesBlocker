@@ -1,11 +1,10 @@
 import json
 from nltk.tokenize import word_tokenize
-import nltk
 import re
 import torch
 from torch.utils.data import TensorDataset, DataLoader
 import numpy as np
-import src.globalVariables as globalVar
+import src.modules.globalVariables as globalVar
 
 
 

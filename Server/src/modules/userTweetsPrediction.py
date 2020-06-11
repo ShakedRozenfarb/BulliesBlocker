@@ -2,7 +2,7 @@ import torch
 from nltk import word_tokenize
 
 from src.dataLoader import tokenize_data
-import src.globalVariables as globalVar
+import src.modules.globalVariables as globalVar
 
 
 def predictLabels(user_tweets):

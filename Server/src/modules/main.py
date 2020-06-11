@@ -1,5 +1,5 @@
 import torch
-import src.globalVariables as globalVar
+import src.modules.globalVariables as globalVar
 from src.modules.data_loader import load_data
 from src.modules.lstm import LSTM
 from src.modules.train import train
