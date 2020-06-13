@@ -1,8 +1,8 @@
 import torch
-import src.modules.globalVariables as globalVar
-from src.modules.data_loader import load_data
-from src.modules.lstm import LSTM
-from src.modules.train import train
+import Server.src.modules.globalVariables as globalVar
+from Server.src.modules.data_loader import load_data
+from Server.src.modules.lstm import LSTM
+from Server.src.modules.train import train
 
 
 def main():

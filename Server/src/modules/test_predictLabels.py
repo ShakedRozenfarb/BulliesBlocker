@@ -1,5 +1,5 @@
 from unittest import TestCase
-from src.modules.userTweetsPrediction import predictLabels
+from Server.src.modules.userTweetsPrediction import predictLabels
 
 
 class TestPredictLabels(TestCase):
