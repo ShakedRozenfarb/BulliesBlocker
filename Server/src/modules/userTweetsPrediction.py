@@ -1,7 +1,7 @@
 import torch
 from nltk import word_tokenize
 
-from src.dataLoader import tokenize_data
+from src.modules.data_loader import tokenize_data
 import src.modules.globalVariables as globalVar
 
 

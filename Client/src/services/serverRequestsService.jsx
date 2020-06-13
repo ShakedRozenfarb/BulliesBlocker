@@ -8,7 +8,9 @@ class ServerRequestsService {
     }
 
     async getUserResults(userId) {
-        const results = await axios.get(this.serverUrl+ '/calculate');
+        console.log(userId);
+        const body = {'user': userId};
+        const results = await axios.post(this.serverUrl+ '/calculate', body);
         return results.data;
     }
 }
