@@ -14,6 +14,7 @@ def calculate_bully_score(user):
     cached_tweets = []
     calculated_tweets = []
     for tweet in timeline:
+        print(tweet)
         result = caching_mongo_client.find_one({"tweet_id": tweet.id_str}, {'_id': False})
         if not result:
             result = {  # TODO: replace with model

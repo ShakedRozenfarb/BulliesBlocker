@@ -11,6 +11,7 @@ setup(
         "tensorflow~=2.2.0",
         "torch~=1.5.0",
         "setuptools~=41.6.0",
-        "pandas"
+        "pandas",
+        "flask_cors"
     ],
 )

@@ -12,19 +12,22 @@ class Main extends Component {
         super(props);
         this.serverService = new ServerRequestsService();
         this.state = {
-            userResults: null
-        }
+            userResults: null,
+            userName: ''
+        };
+
+        this.getUserResults = this.getUserResults.bind(this);
     }
 
-    async getUserResults() {
-        const userResults = await this.serverService.getUserResults(this.state.value);
-        this.setState({userResults: userResults});
+    async getUserResults(userName) {
+        const userResults = await this.serverService.getUserResults(userName);
+        this.setState({userResults: userResults, userName: userName});
     }
 
     render() {
         return (
         <div>
-            {this.state.userResults ? <ResultsComponent userResults={this.state.userResults} /> : <Search getUserResults={this.getUserResults} /> }
+            {this.state.userResults ? <ResultsComponent userName={this.state.userName} userResults={this.state.userResults} /> : <Search getUserResults={this.getUserResults} /> }
         </div>
         )
     }
