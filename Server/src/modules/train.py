@@ -9,7 +9,7 @@ def train(net, batch_size, train_loader, test_loader):
     optimizer = torch.optim.Adam(net.parameters())
     train_loss = []
 
-    for epoch in range(10):
+    for epoch in range(15):
 
         hidden = net.init_hidden(batch_size)
         running_loss = epoch_loss = 0.0
