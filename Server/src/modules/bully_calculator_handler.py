@@ -1,3 +1,5 @@
+from cachetools.func import ttl_cache
+
 from Server.src.modules.db_handler import MongoHandler
 from Server.src.modules.user_latest_tweets import get_user_time_line
 from Server.src.modules.userTweetsPrediction import predictLabels
@@ -7,6 +9,7 @@ TWEETS_COUNT = 100
 caching_mongo_client = MongoHandler().get_caching_mongo_client()
 
 
+@ttl_cache()
 def calculate_bully_score(user):
     timeline = get_user_time_line(IS_SCREEN_NAME, user, TWEETS_COUNT)
     bully_counter = 0
@@ -25,7 +28,6 @@ def calculate_bully_score(user):
         else:
             cached_tweets.append(result)
 
-
     tweets_messages_to_calculate = [tweet_to_calculate["tweet_message"] for tweet_to_calculate in tweets_to_calculate]
 
     if tweets_to_calculate:
@@ -36,6 +38,8 @@ def calculate_bully_score(user):
 
     all_tweets = cached_tweets + tweets_to_calculate
     for tweet in all_tweets:
+        if tweet.get("_id"):
+            del tweet["_id"]
         if tweet.get("is_bully"):
             bully_counter = bully_counter + 1
         else:
