@@ -38,6 +38,18 @@ module.exports = {
                     loader: 'less-loader' // compiles Less to CSS
                 }]
             },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: "[path][name].[ext]",
+                            context: './src/assets'
+                        }
+                    }
+                ]
+            }
         ]
     },
     plugins: [

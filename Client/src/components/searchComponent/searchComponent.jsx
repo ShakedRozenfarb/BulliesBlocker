@@ -29,7 +29,7 @@ class Search extends Component {
         return (
             <div className="center">
                 <h1 className="app-title">Bully Blocker</h1>
-                <textarea value={this.state.value} onChange={this.handleChange} placeholder="type twitter user id"></textarea>
+                <textarea value={this.state.value} onChange={this.handleChange} placeholder="Please enter twitter handle"></textarea>
                 <input className="searchButton" type="submit" value="Submit" onClick={event =>this.handleSubmit(event)}/>
                 {this.state.loading ?
                     <div style={{marginLeft: '43%'}}>

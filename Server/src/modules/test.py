@@ -1,6 +1,5 @@
 import torch
-import numpy as np
-from sklearn.metrics import confusion_matrix, recall_score, precision_score
+from sklearn.metrics import recall_score, precision_score
 
 
 class Test(object):

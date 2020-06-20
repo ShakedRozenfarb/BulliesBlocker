@@ -1,5 +1,7 @@
 import torch
+import nltk as nltk
 from nltk import word_tokenize
+nltk.download('punkt')
 
 from Server.src.modules.data_loader import tokenize_data
 import Server.src.modules.globalVariables as globalVar

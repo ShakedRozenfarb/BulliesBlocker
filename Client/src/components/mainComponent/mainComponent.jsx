@@ -17,6 +17,7 @@ class Main extends Component {
         };
 
         this.getUserResults = this.getUserResults.bind(this);
+        this.returnToSearch = this.returnToSearch.bind(this);
     }
 
     async getUserResults(userName) {
@@ -24,10 +25,14 @@ class Main extends Component {
         this.setState({userResults: userResults, userName: userName});
     }
 
+    returnToSearch() {
+        this.setState({userResults: null, userName: ''});
+    }
+
     render() {
         return (
         <div>
-            {this.state.userResults ? <ResultsComponent userName={this.state.userName} userResults={this.state.userResults} /> : <Search getUserResults={this.getUserResults} /> }
+            {this.state.userResults ? <ResultsComponent userName={this.state.userName} userResults={this.state.userResults} returnToSearch={this.returnToSearch} /> : <Search getUserResults={this.getUserResults} /> }
         </div>
         )
     }
