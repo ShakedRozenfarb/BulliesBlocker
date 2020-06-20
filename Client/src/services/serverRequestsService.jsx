@@ -13,6 +13,13 @@ class ServerRequestsService {
         const results = await axios.post(this.serverUrl+ '/calculate', body);
         return results.data;
     }
+
+    async searchUsers(text_to_search) {
+        console.log(text_to_search);
+        const body = {'search_text': text_to_search};
+        const results = await axios.post(this.serverUrl+ '/searchUsers', body);
+        return results.data;
+    }
 }
 
 export default ServerRequestsService;

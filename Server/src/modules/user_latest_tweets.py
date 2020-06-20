@@ -35,3 +35,11 @@ for tweet in user_time_line:
 
 '''
 
+
+def search_users(search_text, count):
+    search_results = auth_api.search_users(
+                  q=search_text,
+                  count=count,
+                  )
+    users_json = map(lambda user: user._json, search_results)
+    return list(users_json)
