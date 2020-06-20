@@ -4,8 +4,7 @@ import re
 import torch
 from torch.utils.data import TensorDataset, DataLoader
 import numpy as np
-import src.modules.globalVariables as globalVar
-
+import Server.src.modules.globalVariables as globalVar
 
 
 def shuffle(a, b):

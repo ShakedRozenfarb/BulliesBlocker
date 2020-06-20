@@ -6,9 +6,15 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader"
-                }
+                use:
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-env',
+                                '@babel/react',{
+                                    'plugins': ['@babel/plugin-proposal-class-properties']}]
+                        }
+                    }
             },
             {
                 test: /\.html$/,
@@ -38,6 +44,18 @@ module.exports = {
                     loader: 'less-loader' // compiles Less to CSS
                 }]
             },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: "[path][name].[ext]",
+                            context: './src/assets'
+                        }
+                    }
+                ]
+            }
         ]
     },
     plugins: [
