@@ -4,6 +4,10 @@ import re
 import torch
 from torch.utils.data import TensorDataset, DataLoader
 import numpy as np
+#import src.modules.globalVariables as globalVar
+import Server.src.modules.globalVariables as globalVar
+
+threshold = 0.5
 import Server.src.modules.globalVariables as globalVar
 
 
@@ -15,11 +19,12 @@ def shuffle(a, b):
 
 def tokenize_data(max_tweet, tokenize_tweets, tokens_counter, isTrainMode, token_to_id):
     tweets = np.empty((tokenize_tweets.__len__(), max_tweet), dtype=int)
+    outliers = []
     for tweet, i in zip(tokenize_tweets, range(len(tokenize_tweets))):
         tmp_tokens = []
 
         for token in tweet:
-            token = re.sub('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+#]|[!*\(\),]|' \
+            token = re.sub('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|' \
                            '(?:%[0-9a-fA-F][0-9a-fA-F]))+', '', token)
             token = re.sub("(@[A-Za-z0-9_]+)", "", token)
             if len(token) > 0:
@@ -34,13 +39,16 @@ def tokenize_data(max_tweet, tokenize_tweets, tokens_counter, isTrainMode, token
                 else:
                     tmp_tokens.append(token_to_id.get(token_lower))
 
+        if(tmp_tokens.count(0)/len(tmp_tokens) > threshold):
+            outliers.append(i)
+
         tweet_len = len(tmp_tokens)
         if (tweet_len < max_tweet):
             zeros = list(np.zeros(max_tweet - tweet_len))
             tweets[i] = np.array(zeros + tmp_tokens)
         else:
             tweets[i] = np.array(tmp_tokens)
-    return tweets
+    return tweets, outliers
 
 
 def load_data():
@@ -61,7 +69,7 @@ def load_data():
     max_tweet = max(len(l) for l in tokenize_tweets)
     tokens_counter = 1
     token_to_id = {}
-    tweets = tokenize_data(max_tweet, tokenize_tweets, tokens_counter, True, token_to_id)
+    tweets, ignore = tokenize_data(max_tweet, tokenize_tweets, tokens_counter, True, token_to_id)
 
     # shuffle fix_tweets and split the data to test data and train data
     tweets, labels = shuffle(tweets, labels)

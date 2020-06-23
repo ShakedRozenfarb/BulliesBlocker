@@ -19,7 +19,7 @@ class TestPredictLabels(TestCase):
         assert result[0] == 1
         assert result[1] == 0
 
-    # def test_predictLabels_problematic(self): // returns bully
-    #     tweets = ["that's fucking amazing!"]
-    #     result = predictLabels(tweets)
-    #     assert result[0] == 0
+    def test_predictLabels_undefined(self):
+         tweets = ["Text 'FLOYD' to 55156 #BlackLivesMatters #JusticeForGeorgeFloyd #JusticeforAhmaudArbery #JusticeforBreonnaTaylor"]
+         result = predictLabels(tweets)
+         assert result[0] == 2

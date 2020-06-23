@@ -18,7 +18,7 @@ def predictLabels(user_tweets):
         tokenize_tweets.append(word_tokenize(tweet))
 
     max_tweet = max(len(l) for l in tokenize_tweets)
-    tokenize_tweets = tokenize_data(max_tweet, tokenize_tweets, tokens_counter, False, token_to_id)
+    tokenize_tweets, outliers = tokenize_data(max_tweet, tokenize_tweets, tokens_counter, False, token_to_id)
 
     tokenize_tweets = torch.from_numpy(tokenize_tweets)
     hidden = net.init_hidden(tokenize_tweets.__len__())
@@ -27,4 +27,7 @@ def predictLabels(user_tweets):
 
     outputs, hidden = net(inputs, hidden)
     predicted = torch.round(outputs)
-    return predicted.tolist()
+    res = predicted.tolist()
+    for outlier in outliers:
+        res[outlier]=2
+    return res
