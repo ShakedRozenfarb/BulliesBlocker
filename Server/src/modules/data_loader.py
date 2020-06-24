@@ -39,7 +39,7 @@ def tokenize_data(max_tweet, tokenize_tweets, tokens_counter, isTrainMode, token
                 else:
                     tmp_tokens.append(token_to_id.get(token_lower))
 
-        if(tmp_tokens.count(0)/len(tmp_tokens) > threshold):
+        if(tmp_tokens.count(0) + tmp_tokens.count(331))/len(tmp_tokens) > threshold: # if token is unknown or hashtag
             outliers.append(i)
 
         tweet_len = len(tmp_tokens)
