@@ -30,7 +30,7 @@ class GraphComponent extends Component {
             if (!timeDict[monthBegining]) {
                 timeDict[monthBegining] = 0;
             }
-            if (result.is_bully) {
+            if (result.is_bully === true || result.is_bully === 'true') {
                 timeDict[monthBegining] += 1;
             }
         });
