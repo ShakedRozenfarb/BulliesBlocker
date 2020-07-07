@@ -20,7 +20,7 @@ class ResultsComponent extends Component {
                 <div className="left">
                     <div className="results-title">{`${this.state.userName} Bullying Results`}</div>
                     <div className="score-results">{`${this.state.userName} has a bullying score of ${this.state.userResults.score * 100}`}</div>
-                    <div className="score-explanation">{`${this.state.userResults.score * 100} tweets identified as bullying from ${this.state.userResults.tweets.length} tweets`}</div>
+                    <div className="score-explanation">{`${this.state.userResults.tweets.filter(tweet => tweet.is_bully === 'true' || tweet.is_bully === true).length} tweets identified as bullying from ${this.state.userResults.tweets.length} tweets`}</div>
                 </div>
                 <div className="tweets">
                     <div className="box-title">{`${this.state.userName} Latest Tweets`}</div>
